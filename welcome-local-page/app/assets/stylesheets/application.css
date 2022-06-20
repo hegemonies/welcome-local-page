@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'JetbrainsMono ExtraBold';
+    src: url('JetBrainsMono-ExtraBold.woff2')
+ }
+
+body {
+    background-color: #3A3A3A;
+    font-family: 'JetBrainsMono ExtraBold';
+}
+
+.welcome-resources {
+    margin: auto;
+    width: 800px;
+}
+
+.welcome-phrase {
+    background-color: #666666;
+    padding: 10px 50px;
+}
+
+.welcome-phrase p {
+    font-size: 64px;
+    color: #3A3A3A;
+    margin: 0;
+}
+
+.resources {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.resources .resource {
+    display: flex;
+    align-items: flex-start;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    width: 375px;
+}
+
+.resources img {
+    padding: 25px 0px;
+    padding-left: 25px;
+}
+
+.resources .resource-texts {
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px;
+}
+
+.resources p {
+    margin: inherit;
+}
+
+.resources p:first-child {
+    margin-bottom: 20px
+}
+
+.resource-name {
+    color: #000000;
+    font-size: 24px;
+}
+
+.resource-server-name {
+    color: #666666;
+    font-size: 16px;
+}
+
+.resource-url {
+    color: #666666;
+    font-size: 16px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Welcome Local Page</title>
+    <link rel="icon" href="https://fav.farm/👀" />
+    <%= stylesheet_link_tag "application.css" %>
+  </head>
+
+  <body>
+
+    <div class="welcome-resources">
+
+      <div class="welcome-phrase">
+
+        <p>
+          <%= @welcome_text %>
+        </p>
+
+      </div>
+
+      <div class="resources">
+        
+        <% @local_resources.each do |resource| %>
+          <% image_exists = resource['image'] != '' %>
+          <% image_src = image_exists ? resource['image'] : asset_path('resource-image-empty.svg') %>
+
+          <div class="resource">
+
+            <%= image_tag(image_src) %>
+
+            <div class="resource-texts">
+              <p class="resource-name">
+                <%= resource['name'] %>
+              </p>
+
+              <p class="resource-server-name">
+                <%= resource['server_name'] %>
+              </p>
+
+              <p class="resource-url">
+                <a href="<%= resource['url'] %>">
+                  <%= resource['url'] %>
+                </a>
+              </p>
+            </div>
+
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

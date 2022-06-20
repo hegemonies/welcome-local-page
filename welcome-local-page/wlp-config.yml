@@ -1,0 +1,46 @@
+welcome-text: "Welcome local page"
+resources:
+  - name: "geekr"
+    server_name: "lt" 
+    url: "http://lt:5001"
+    image: ''
+  - name: "btstn"
+    server_name: "lt" 
+    url: "http://lt:8090"
+    image: ''
+  - name: "VaultWarden"
+    server_name: "lt" 
+    url: "http://lt:8088"
+    image: ''
+  - name: "VaultWarden HTTPS"
+    server_name: "lt" 
+    url: "https://vaultwarden.bravo-news.ru"
+    image: ''
+  - name: "Docker Registry Manager"
+    server_name: "lt" 
+    url: "http://lt:7575"
+    image: ''
+  - name: "Grafana"
+    server_name: "lt" 
+    url: "http://lt:3000"
+    image: ''
+  - name: "OpenMediaVault"
+    server_name: "pi41" 
+    url: "http://pi41:80"
+    image: ''
+  - name: "Grafana"
+    server_name: "pi41" 
+    url: "http://pi41:3001"
+    image: ''
+  - name: "Prometheus"
+    server_name: "pi41" 
+    url: "http://pi41:9090"
+    image: ''
+  - name: "Minio"
+    server_name: "pi41" 
+    url: "http://pi41:9001"
+    image: ''
+  - name: "Gitea"
+    server_name: "pi41" 
+    url: "http://pi41:3000"
+    image: ''
