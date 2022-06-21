@@ -1,12 +1,12 @@
 version: '3'
 
 services:
-  app:
+
+  wlp:
     image: lt:5000/welcome-local-page:latest
     ports:
-      - "3000:3000"
-    volumes:
-      - wlp-config.yml:/app/wlp-config.yml
-    env_file: .env
+      - "4000:3000"
+    # volumes:
+    #   - app-config/wlp-config.yml:/app/wlp-config.yml
     environment:
       RAILS_ENV: development

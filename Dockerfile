@@ -1,5 +1,6 @@
 FROM ruby:3.1.2-alpine
 
+RUN apk update && apk upgrade
 RUN apk add --update --no-cache \
       binutils-gold \
       build-base \
@@ -22,16 +23,18 @@ RUN apk add --update --no-cache \
       openssl \
       pkgconfig \
       postgresql-dev \
-      python \
+      python3 \
       tzdata \
-      yarn
+      yarn \
+      sqlite \
+      sqlite-dev
 
 ENV BUNDLER_VERSION=2.3.7
 RUN gem install bundler -v 2.3.7
 
 WORKDIR /app
 
-COPY welcome-local-page/Gemfile welcome-local-page/Gemfile.lock ./
+COPY Gemfile Gemfile.lock ./
 
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle check || bundle install
