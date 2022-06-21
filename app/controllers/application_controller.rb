@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
     @@logger = Logger.new(STDOUT)
 
     def index
-        filename = 'wlp-config.yml'
+        filename = 'app-config/wlp-config.yml'
         @@logger.info filename + " is exists " + (File.exists?(filename) ? "true" : "false")
 
-        data = YAML.safe_load(File.open('wlp-config.yml'))
+        data = YAML.safe_load(File.open filename)
         @@logger.info data
 
         @welcome_text = data['welcome-text']

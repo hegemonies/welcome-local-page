@@ -12,7 +12,7 @@ resources:
     server_name: "lt" 
     url: "http://lt:8088"
     image: ''
-  - name: "VaultWarden HTTPS"
+  - name: "VaultWarden sec"
     server_name: "lt" 
     url: "https://vaultwarden.bravo-news.ru"
     image: ''
