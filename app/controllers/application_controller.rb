@@ -10,9 +10,7 @@ class ApplicationController < ActionController::Base
 
         data = YAML.safe_load(File.open filename)
         @@logger.info data
-
         @welcome_text = data['welcome-text']
         @local_resources = data['resources']
-        @@logger.info @local_resources
     end
 end

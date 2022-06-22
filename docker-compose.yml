@@ -4,6 +4,7 @@ services:
 
   wlp:
     image: lt:5000/welcome-local-page:latest
+    restart: always
     ports:
       - "4000:3000"
     # volumes:
