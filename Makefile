@@ -3,3 +3,5 @@ build-docker:
 
 push-docker:
 	docker push lt:5000/welcome-local-page:latest
+
+build-push-docker: build-docker push-docker
