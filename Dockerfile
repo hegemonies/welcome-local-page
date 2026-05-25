@@ -10,7 +10,9 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN bun run build
+# DATABASE_URL is only needed so `next build`'s "Collecting page data" step
+# can import our DB module without throwing. No queries run at build time.
+RUN DATABASE_URL=postgres://buildtime:buildtime@buildtime:5432/buildtime bun run build
 
 FROM oven/bun:1-alpine AS runner
 WORKDIR /app
