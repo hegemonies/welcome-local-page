@@ -26,7 +26,7 @@ Drizzle migrations live in `./drizzle` and are generated with `npm run db:genera
 
 Local dev:
 - `bun install` then `bun run dev` — Next dev server on port 3000 (`bun --bun next dev`, i.e. the Next server runs under the Bun runtime, not Node).
-- `bun run build` / `bun run start` — production build (uses `output: 'standalone'`). `build` deliberately does **not** force `--bun` so the SWC native binary path stays on the well-tested route; `start` does force `--bun` since that's where our request code actually runs.
+- `bun run build` / `bun run start` — production build (uses `output: 'standalone'`). Both **must** run with `bun --bun next ...` (forces the Bun runtime) — Next's `Collecting page data` phase imports the page modules, and our `drizzle-orm/bun-sql/driver.js` does `import { SQL } from 'bun'`, which Node can't resolve. Don't downgrade these scripts to plain `next build`.
 - `bun run lint` / `bun run typecheck`.
 - `bun run db:generate` / `bun run db:push` — Drizzle Kit (optional; runtime auto-creates tables).
 - Need a local Postgres for dev — easiest is `docker-compose up -d db` and `export DATABASE_URL=postgres://wlp:wlp@localhost:5432/wlp`.
