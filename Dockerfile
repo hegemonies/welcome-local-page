@@ -1,44 +1,35 @@
-FROM ruby:3.1.2-alpine
+# syntax=docker/dockerfile:1.7
 
-RUN apk update && apk upgrade
-RUN apk add --update --no-cache \
-      binutils-gold \
-      build-base \
-      curl \
-      file \
-      g++ \
-      gcc \
-      git \
-      less \
-      libstdc++ \
-      libffi-dev \
-      libc-dev \
-      linux-headers \
-      libxml2-dev \
-      libxslt-dev \
-      libgcrypt-dev \
-      make \
-      netcat-openbsd \
-      nodejs \
-      openssl \
-      pkgconfig \
-      postgresql-dev \
-      python3 \
-      tzdata \
-      yarn \
-      sqlite \
-      sqlite-dev
-
-ENV BUNDLER_VERSION=2.3.7
-RUN gem install bundler -v 2.3.7
-
+FROM oven/bun:1-alpine AS deps
 WORKDIR /app
+COPY package.json bun.lockb* bun.lock* ./
+RUN bun install --frozen-lockfile || bun install
 
-COPY Gemfile Gemfile.lock ./
+FROM oven/bun:1-alpine AS builder
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN bun run build
 
-RUN bundle config build.nokogiri --use-system-libraries
-RUN bundle check || bundle install
+FROM oven/bun:1-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 
-COPY . ./
+RUN addgroup --system --gid 1001 nodejs \
+ && adduser --system --uid 1001 nextjs
 
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/app-config ./app-config
+COPY --chown=nextjs:nodejs entrypoints/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+USER nextjs
+EXPOSE 3000
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

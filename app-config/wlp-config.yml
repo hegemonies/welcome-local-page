@@ -1,46 +1,66 @@
 welcome-text: "Welcome local page"
 resources:
-  - name: "geekr"
-    server_name: "lt" 
-    url: "http://lt:5001"
-    image: ''
-  - name: "btstn"
-    server_name: "lt" 
-    url: "http://lt:8090"
-    image: ''
-  - name: "VaultWarden"
-    server_name: "lt" 
-    url: "http://lt:8088"
-    image: ''
-  - name: "VaultWarden sec"
-    server_name: "lt" 
-    url: "https://vaultwarden.bravo-news.ru"
-    image: ''
-  - name: "Docker Registry Manager"
-    server_name: "lt" 
-    url: "http://lt:7575"
-    image: ''
   - name: "Grafana"
     server_name: "lt" 
     url: "http://lt:3000"
     image: ''
-  - name: "OpenMediaVault"
-    server_name: "pi41" 
-    url: "http://pi41:80"
-    image: ''
-  - name: "Grafana"
-    server_name: "pi41" 
-    url: "http://pi41:3001"
-    image: ''
-  - name: "Prometheus"
-    server_name: "pi41" 
-    url: "http://pi41:9090"
-    image: ''
-  - name: "Minio"
-    server_name: "pi41" 
-    url: "http://pi41:9001"
-    image: ''
   - name: "Gitea"
-    server_name: "pi41" 
-    url: "http://pi41:3000"
+    server_name: "lt" 
+    url: "http://lt:3030"
+    image: ''
+  - name: "Jellyfin"
+    server_name: "lt"
+    url: "http://lt:8096"
+    image: ''
+  - name: "qbitorrent"
+    server_name: "lt"
+    url: "http://lt:8097"
+    image: ''
+  - name: "dashdot"
+    server_name: "lt"
+    url: "http://lt:3002"
+    image: ''
+  - name: "Uptime Kuma"
+    server_name: "lt"
+    url: "http://lt:3001"
+    image: ''
+  - name: "Portainer"
+    server_name: "lt"
+    url: "http://lt:9000"
+    image: ''
+  - name: "Dozzle"
+    server_name: "lt"
+    url: "http://lt:8889/"
+    image: ''
+  - name: "SNMP Browser"
+    server_name: "lt"
+    url: "http://lt:7000"
+    image: ''
+  - name: "Immich"
+    server_name: "lt"
+    url: "http://lt:2283"
+    image: ''
+  - name: "n8n"
+    server_name: "lt"
+    url: "http://lt:5678"
+    image: ''
+  - name: "moodies gallery"
+    server_name: "lt"
+    url: "http://lt:13000"
+    image: ''
+  - name: "Temporal"
+    server_name: "lt"
+    url: "http://lt:48080"
+    image: ''
+  - name: "Dokploy"
+    server_name: "lt"
+    url: "http://lt:3003"
+    image: ''
+  - name: "Invest Portfolio Analyzer"
+    server_name: "lt"
+    url: "http://lt:8080"
+    image: ''
+  - name: "Jaeger"
+    server_name: "lt"
+    url: "http://lt:16686"
     image: ''

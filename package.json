@@ -1,0 +1,38 @@
+{
+  "name": "welcome-local-page",
+  "version": "2.0.0",
+  "private": true,
+  "packageManager": "bun@1.1.42",
+  "scripts": {
+    "dev": "bun --bun next dev",
+    "build": "next build",
+    "start": "bun --bun next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:seed": "bun scripts/seed-from-yaml.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.2",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.14",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "^15.1.0",
+    "pg": "^8.13.1",
+    "typescript": "^5.7.2"
+  },
+  "trustedDependencies": [
+    "@swc/core",
+    "sharp"
+  ]
+}
