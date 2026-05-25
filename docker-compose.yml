@@ -1,18 +1,4 @@
 services:
-  db:
-    image: postgres:16-alpine
-    restart: always
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-wlp}
-      POSTGRES_USER: ${POSTGRES_USER:-wlp}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wlp}
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-wlp} -d ${POSTGRES_DB:-wlp}"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
 
   wlp:
     image: lt:5000/welcome-local-page:latest
@@ -23,11 +9,3 @@ services:
       NODE_ENV: production
       DATABASE_URL: postgres://${POSTGRES_USER:-wlp}:${POSTGRES_PASSWORD:-wlp}@db:5432/${POSTGRES_DB:-wlp}
       WLP_CONFIG_PATH: /app/app-config/wlp-config.yml
-    depends_on:
-      db:
-        condition: service_healthy
-    # volumes:
-    #   - ./app-config/wlp-config.yml:/app/app-config/wlp-config.yml:ro
-
-volumes:
-  db-data:
